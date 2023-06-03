@@ -1,0 +1,145 @@
+@mixin mobile {
+    @media (min-width: map-get($breakpoints, "sm")) {
+      @content;
+    }
+  }
+  
+  @mixin tablet {
+    @media (min-width: map-get($breakpoints, "md")) {
+      @content;
+    }
+  }
+  
+  @mixin laptop {
+    @media (min-width: map-get($breakpoints, "lg")) {
+      @content;
+    }
+  }
+  
+  @mixin desktop {
+    @media (min-width: map-get($breakpoints, "xl")) {
+      @content;
+    }
+  }
+  
+  @mixin flexbox($display: flex,
+    $direction: row,
+    $placeContent: null,
+    $placeItems: null,
+    $wrap: null,
+    $shrink: null,
+    $grow: null,
+    $alignContent: null,
+    $justifyContent: null,
+    $alignItems: null,
+    $justifyItems: null) {
+    display: $display;
+    flex-direction: $direction;
+  
+    @if $placeContent==null {
+      @if $alignContent {
+        align-content: $alignContent;
+      }
+  
+      @if $justifyContent {
+        justify-content: $justifyContent;
+      }
+    }
+  
+    @else {
+      place-content: $placeContent;
+    }
+  
+    @if $placeItems==null {
+      @if $alignItems {
+        align-items: $alignItems;
+      }
+  
+      @if $justifyItems {
+        justify-items: $justifyItems;
+      }
+    }
+  
+    @else {
+      place-items: $placeItems;
+    }
+  
+    @if $wrap {
+      flex-wrap: $wrap;
+    }
+  
+    @if $shrink {
+      flex-shrink: $shrink;
+    }
+  
+    @if $grow {
+      flex-grow: $grow;
+    }
+  }
+  
+  @mixin padding($padding: null, $paddingTop: null, $paddingRight: null, $paddingBottom: null, $paddingLeft: null) {
+    @if $padding==null {
+      @if $paddingTop {
+        padding-top: $paddingTop;
+      }
+  
+      @if $paddingRight {
+        padding-right: $paddingRight;
+      }
+  
+      @if $paddingBottom {
+        padding-bottom: $paddingBottom;
+      }
+  
+      @if $paddingLeft {
+        padding-left: $paddingLeft;
+      }
+    }
+  
+    @else {
+      padding: $padding;
+    }
+  }
+  
+  @mixin margin($margin: null, $marginTop: null, $marginRight: null, $marginBottom: null, $marginLeft: null) {
+    @if $margin==null {
+      @if $marginTop {
+        margin-top: $marginTop;
+      }
+  
+      @if $marginRight {
+        margin-right: $marginRight;
+      }
+  
+      @if $marginBottom {
+        margin-bottom: $marginBottom;
+      }
+  
+      @if $marginLeft {
+        margin-left: $marginLeft;
+      }
+    }
+  
+    @else {
+      margin: $margin;
+    }
+  }
+  
+  @mixin backgroundImage($imgpath:null, $position:null, $repeat: no-repeat, $size:null) {
+    @if $imgpath==null {
+      background: {
+        position: $position;
+        repeat: $repeat;
+        size: $size
+      }
+    }
+  
+    @else {
+      background: {
+        image: url($imgpath);
+        position: $position;
+        repeat: $repeat;
+        size: $size
+      }
+    }
+  }

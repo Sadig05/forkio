@@ -1,0 +1,311 @@
+@import "../abstracts/all.scss";
+
+
+
+.container {
+  @include padding(
+    $paddingRight: 1.625rem,
+    $paddingLeft: 1.625rem,
+    $paddingBottom: .875rem,
+    $paddingTop: .875rem,
+   
+  );
+  font-family: 'Montserrat', sans-serif;
+  background-color: $darkish;
+  @include flexbox($justifyContent: space-between, $alignItems: center);
+  font-weight: $fw-bold;
+}
+
+.forkio-text-logo{
+  display: none;
+}
+
+.header-menu {
+  display: none;
+
+  .menu-list {
+    @include tablet {
+      display: flex;
+    }
+  }
+}
+
+#menu-icon {
+  width: 100%;
+  height: 37px;
+  cursor: pointer;
+}
+
+.drop-menu {
+  display: none;
+  
+  position: absolute;
+  width: calc( 100% - 30px );
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  @include padding($paddingBottom: 14px);
+  background-color: $lightGray;
+  border-top: 1px solid $blushPink;
+  border-bottom: 1px solid $blushPink;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+  animation: easiOut 0.3s;
+
+  .menu-list {
+    @include flexbox($direction: column, $alignItems: center);
+  }
+
+  .menu-item {
+    width: 100%;
+    padding: 30px 0;
+    border-bottom: 2px solid $lighterGray;
+    a {
+      color: $white;
+      padding: 10px 35px;
+      @include margin($marginLeft: 2px);
+      font-weight: $fw-normal;
+      font-size: 26px;
+      line-height: 26px;
+    }
+
+    &.active {
+      a {
+        color: $blushPink;
+        border-left: 8px solid $blushPink;
+      
+      }
+    }
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &.active {
+    display: block;
+  }
+
+  @keyframes easiOut {
+    0% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.buy-btn {
+  @include padding($padding: 11px 32px);
+  background-color: $blushPink;
+  border-radius: 40px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+
+  a {
+    color: $white;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $blushPink;
+    }
+  }
+
+  &:hover {
+    background-color: $white;
+
+    a {
+      color: $blushPink;
+    }
+  }
+}
+
+
+.about{
+  color: $white;
+  padding: 25px;
+  @include flexbox($direction: column);
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  @include backgroundImage(
+    $imgpath: "../assets/img/testmonials-bg-1.png",
+    $repeat: no-repeat,
+    $position: center,
+    $size: cover
+  );
+
+
+  .about-title{
+    font-size: 36px;
+    line-height: 48px;
+    font-weight: $fw-bold;
+    @include padding($paddingBottom: 53px)
+  }
+
+  .companies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.company {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  p {
+    font-family: 'Lato';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center; 
+  }
+}
+
+  
+  .about-text{
+    color: $lightPurple;
+    @include margin($marginTop: 2.3rem)
+  }
+
+  .about-bottom-line{
+    background-color: $darkPurple;
+    height: 2px;
+    width: 100%;
+    @include margin($marginTop: 2.3rem)
+  }
+
+}
+
+
+@include tablet {
+
+  .container{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .header-logo{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1rem;
+    width: 50%;
+
+    .forkio-text-logo{
+      display: block;
+      color: $blushPink;
+      font-size: 24px;
+      line-height: 16px;
+      font-family: 'Lato', sans-serif;
+    }
+  }
+
+  .buy-btn-container-btn{
+    width: 50%;
+  }
+
+
+
+  .header-menu {
+    display: flex;
+    order: 3;
+    .menu-list {
+      @include flexbox();
+    }
+
+    .menu-item {
+      @include margin($marginRight: 47px);
+      font-weight: 700;
+      a {
+        color: $blushPink;
+
+        &:hover {
+          color: $white;
+        }
+      }
+
+      &.active {
+        a {
+          color: $white;
+
+          &:hover {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  .burger {
+    display: none;
+  }
+
+
+  .about{
+    padding: 80px;
+    .companies{
+      @include flexbox($direction: row, $wrap: wrap);
+     
+      .company{
+        width: 45%;
+      }
+    }
+
+    .about-bottom-line{
+      @include margin($marginRight: auto, $marginLeft: auto);
+      width: 80%;
+      
+    }
+    
+  }
+
+}
+
+
+@include laptop{
+    .container{
+        background-color: $dark;
+        @include padding(
+            $paddingRight: 5.625rem,
+            $paddingLeft: 5.625rem,
+            $paddingBottom: 1.875rem,
+            $paddingTop: 1.875rem
+          );
+    }
+
+    .header-logo{
+        flex: 1;
+    }
+
+    .buy-btn-container{
+      order: 3;
+    }
+
+    .about{
+     
+      .companies{
+        // @include flexbox($direction: row, $wrap: wrap);
+       
+        .company{
+          width: 30%;
+        }
+      }
+  
+      
+    }
+
+    
+}
